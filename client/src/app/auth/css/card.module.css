@@ -1,14 +1,13 @@
 @keyframes slideInFromBehind {
-    0% {
-      transform: translate(-50%, -100%);
-      opacity: 0;
-    }
-    100% {
-      transform: translate(-50%, -50%);
-      opacity: 1;
-    }
+  0% {
+    transform: translate(-50%, -100%);
+    opacity: 0;
   }
-  
+  100% {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
 
 .card {
   position: absolute;
@@ -44,12 +43,14 @@
     border-radius: 5px;
     cursor: pointer;
   }
-
-  & p span {
-    font-weight: bold;
-    &:hover {
-      cursor: pointer;
-      border-bottom: 1px solid #000;
+  & .redirect {
+    text-align: center;
+    & span {
+      font-weight: bold;
+      &:hover {
+        cursor: pointer;
+        border-bottom: 1px solid #000;
+      }
     }
   }
 }

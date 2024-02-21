@@ -2,16 +2,18 @@ import { z } from "zod";
 
 export const schemaRegister = z
   .object({
-    email: z.string().email("Invalid email address"),
-    password: z.string().min(8, "Password must have at least 8 characters"),
+    email: z.string().email("Correo electronico invalido"),
+    password: z
+      .string()
+      .min(8, "La contraseña debe tener al menos 8 caracteres"),
     confirmPassword: z
       .string()
-      .min(8, "Password must have at least 8 characters"),
+      .min(8, "La contraseña debe tener al menos 8 caracteres"),
     terms: z.literal(true, {
-      errorMap: () => ({ message: "You must accept Terms and Conditions" }),
+      errorMap: () => ({ message: "Debes aceptar los terminos y condiciones" }),
     }),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
-    path: ["confirmPassword"], // specify the path of the error
+    message: "Contraseñas no coinciden",
+    path: ["confirmPassword"],
   });

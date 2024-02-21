@@ -60,7 +60,7 @@ const Auth = () => {
 
         <button type="submit">Registrarse</button>
 
-        <p>
+        <p className={stylesCard.redirect}>
           ¿Tienes una cuenta? <span>Inicia sesion</span>
         </p>
       </div>
