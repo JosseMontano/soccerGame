@@ -1,8 +1,19 @@
+@keyframes slideInFromBehind {
+    0% {
+      transform: translate(-50%, -100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
+  }
+  
+
 .card {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -10,6 +21,7 @@
   background-color: rgba(189, 241, 228, 0.2);
   backdrop-filter: blur(5px);
   border-radius: 7px;
+  animation: slideInFromBehind 1s ease-out forwards;
   & h3 {
     text-align: center;
     font-size: 28px;
@@ -30,6 +42,7 @@
     color: #fff;
     padding: 10px;
     border-radius: 5px;
+    cursor: pointer;
   }
 
   & p span {

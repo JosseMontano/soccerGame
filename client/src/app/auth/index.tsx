@@ -1,27 +1,12 @@
 import stylesImg from "./css/image.module.css";
 import stylesCard from "./css/card.module.css";
 import Img from "../../assets/backgroundAuth.jpg";
-
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { RegisterDTO } from "./dtos/register";
+import { schemaRegister } from "./validations/register";
 
-const schema = z
-  .object({
-    email: z.string().email("Invalid email address"),
-    password: z.string().min(8, "Password must have at least 8 characters"),
-    confirmPassword: z
-      .string()
-      .min(8, "Password must have at least 8 characters"),
-    terms: z.literal(true, {
-      errorMap: () => ({ message: "You must accept Terms and Conditions" }),
-    }),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
-    path: ["confirmPassword"], // specify the path of the error
-  });
+// ? libs
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const Auth = () => {
   const {
@@ -29,7 +14,7 @@ const Auth = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<RegisterDTO>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(schemaRegister),
   });
 
   const onSubmit = (data: RegisterDTO) => {
