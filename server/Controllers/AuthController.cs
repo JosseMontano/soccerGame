@@ -22,7 +22,7 @@ namespace server.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterDTO body)
         {
-            var existUser = await _db.Users.AnyAsync(x => x.Gmail == body.Correo);
+            var existUser = await _db.Users.AnyAsync(x => x.Gmail == body.Gmail);
             if (existUser) return res.BadRequestResponse(Messages.Auth.EXISTSUSERNAME);
 
             //? validate password 
@@ -30,7 +30,7 @@ namespace server.Controllers
 
             var user = new User
             {
-                Gmail = body.Correo,
+                Gmail = body.Gmail,
                 Password = body.Password
             };
 
