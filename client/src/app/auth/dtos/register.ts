@@ -1,7 +1,6 @@
 export interface RegisterDTO {
-    email: string
-    password: string
-    confirmPassword: string
-    terms: boolean
-  }
-  
+  gmail: string;
+  password: string;
+  confirmPassword: string;
+  terms: boolean;
+}

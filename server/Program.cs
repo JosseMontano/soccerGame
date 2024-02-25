@@ -11,7 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 //? start: swagger
-builder.Services .AddSwaggerGen(option =>
+builder.Services.AddSwaggerGen(option =>
     {
         option.SwaggerDoc("v1", new OpenApiInfo { Title = "Declaraciones juradas API", Version = "v1" });
         option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -52,10 +52,13 @@ builder.Services.AddDbContext<DBContext>(options =>
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {
-	options.AddPolicy(name: MyAllowSpecificOrigins, policy =>
-	{
-    	policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
-	});
+    options.AddPolicy(name: MyAllowSpecificOrigins, policy =>
+    {
+        policy
+                    .AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+    });
 
 });
 //? end: cors

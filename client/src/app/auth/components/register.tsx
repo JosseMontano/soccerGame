@@ -4,9 +4,12 @@ import { RegisterDTO } from "../dtos/register";
 import { schemaRegister } from "../validations/register";
 import stylesCard from "../css/card.module.css";
 import { FormType } from "..";
+import { registerService } from "../services/register";
+import { toast } from "react-hot-toast";
+import { UseRouter } from "../../../hooks/useRouter";
 
 interface Props {
-    handleChangeForm: (val: FormType) => void;
+  handleChangeForm: (val: FormType) => void;
 }
 const RegisterForm = ({ handleChangeForm }: Props) => {
   const {
@@ -17,20 +20,27 @@ const RegisterForm = ({ handleChangeForm }: Props) => {
     resolver: zodResolver(schemaRegister),
   });
 
-  const onSubmit = (data: RegisterDTO) => {
-    console.log(data);
+  const { redirect } = UseRouter();
+
+  const onSubmit = async (data: RegisterDTO) => {
+    const res = await registerService(data);
+    const thereIsToken = res.data.token;
+    if (thereIsToken) {
+      toast.success(res.message, { duration: 3000 });
+      redirect("/dashboard/home");
+    } else toast.error(res.message, { duration: 3000 });
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={stylesCard.card}>
       <h3>Registro</h3>
       <input
-        {...register("email")}
+        {...register("gmail")}
         className={stylesCard.input}
         type="text"
         placeholder="Correo electronico"
       />
-      {errors.email && <p>{errors.email.message}</p>}
+      {errors.gmail && <p>{errors.gmail.message}</p>}
 
       <input
         {...register("password")}

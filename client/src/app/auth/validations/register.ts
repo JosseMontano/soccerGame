@@ -2,13 +2,13 @@ import { z } from "zod";
 
 export const schemaRegister = z
   .object({
-    email: z.string().email("Correo electronico invalido"),
+    gmail: z.string().email("Correo electronico invalido"),
     password: z
       .string()
-      .min(8, "La contraseña debe tener al menos 8 caracteres"),
+      .min(6, "La contraseña debe tener al menos 6 caracteres"),
     confirmPassword: z
       .string()
-      .min(8, "La contraseña debe tener al menos 8 caracteres"),
+      .min(6, "La contraseña debe tener al menos 6 caracteres"),
     terms: z.literal(true, {
       errorMap: () => ({ message: "Debes aceptar los terminos y condiciones" }),
     }),

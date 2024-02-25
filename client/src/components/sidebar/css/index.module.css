@@ -1,0 +1,35 @@
+:root {
+  --sidebar-width: 250px;
+}
+
+.sidebar {
+  width: var(--sidebar-width);
+  height: 100vh;
+  background-color: #02281c;
+  position: fixed;
+  overflow: auto;
+
+  & .option {
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  & .subOption {
+    padding: 10px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+}
+
+.content {
+  position: absolute;
+  left:calc(var(--sidebar-width) + 15px);
+}
+
+@media screen and (max-width: 600px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+}
