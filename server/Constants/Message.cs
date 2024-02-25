@@ -15,6 +15,7 @@ namespace server.Constants
             public static string ERRORTOKEN { get; } = "Token inválido";
             public static string ERRORPASSWORDACTUAL { get; } = "La contraseña actual no coincide";
             public static string ERRORPASSWORDBODY { get; } = "Las contraseña nueva no coincide";
+            public static string LOGINSUCESS { get; } = "Sesión iniciada correctamente";
         }
     }
 }
