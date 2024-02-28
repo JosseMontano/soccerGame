@@ -18,7 +18,6 @@ namespace server.Controllers
         private readonly DBContext db;
         private readonly IConfiguration configuration;
         Response res = new();
-        private readonly Response response = new Response();
         public AuthController(DBContext _db, IConfiguration _configuration)
         {
             db = _db;

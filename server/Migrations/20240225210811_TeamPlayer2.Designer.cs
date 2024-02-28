@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using server.Data;
@@ -11,9 +12,11 @@ using server.Data;
 namespace server.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20240225210811_TeamPlayer2")]
+    partial class TeamPlayer2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,9 +75,14 @@ namespace server.Migrations
                     b.Property<int>("TeamId")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("TeamId1")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("TeamId");
+
+                    b.HasIndex("TeamId1");
 
                     b.ToTable("Players");
                 });
@@ -163,10 +171,14 @@ namespace server.Migrations
             modelBuilder.Entity("Player", b =>
                 {
                     b.HasOne("Team", "Team")
-                        .WithMany("Players")
+                        .WithMany()
                         .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Team", null)
+                        .WithMany("Players")
+                        .HasForeignKey("TeamId1");
 
                     b.Navigation("Team");
                 });

@@ -17,5 +17,14 @@ namespace server.Constants
             public static string ERRORPASSWORDBODY { get; } = "Las contraseña nueva no coincide";
             public static string LOGINSUCESS { get; } = "Sesión iniciada correctamente";
         }
+        
+        public static class Team
+        {
+            public static string FOUND { get; } = "Equipo obtenido correctamente";
+            public static string NOTFOUND { get; } = "No se encontró el equipo";
+            public static string CREATED { get; } = "Equipo registrado correctamente";
+            public static string UPDATED { get; } = "Equipo actualizado exitosamente";
+            public static string DELETED { get; } = "Equipo eliminado exitosamente";
+        }
     }
 }

@@ -13,27 +13,36 @@ namespace server.Data
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<Player> Players { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //* ===================== START: DATA =====================
 
-            //? Usuario
-            modelBuilder.Entity<User>().HasData(
-                new User { Id = 1, Gmail = "eljosema505@gmail.com", Password = "123456" }
-            );
-            //* ===================== END: DATA =====================
 
 
             //* ===================== START: Relation =====================
 
+            modelBuilder.Entity<Player>()
+          .HasOne(p => p.Team)
+          .WithMany(p => p.Players)
+          .HasForeignKey(p => p.TeamId);
 
             //* ===================== END: Relation =====================
+
+            //* ===================== START: DATA =====================
+
+            //? User
+            modelBuilder.Entity<User>().HasData(
+                new User { Id = 1, Gmail = "eljosema505@gmail.com", Password = "123456" }
+            );
 
 
             //* ===================== START: Get just states actives =====================
             modelBuilder.Entity<User>().HasQueryFilter(p => p.Estado == States.ACTIVE);
+            modelBuilder.Entity<Team>().HasQueryFilter(p => p.Estado == States.ACTIVE);
+            modelBuilder.Entity<Player>().HasQueryFilter(p => p.Estado == States.ACTIVE);
             //* ===================== END: Get just states actives =====================
 
         }

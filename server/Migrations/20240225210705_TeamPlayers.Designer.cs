@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using server.Data;
@@ -11,9 +12,11 @@ using server.Data;
 namespace server.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20240225210705_TeamPlayers")]
+    partial class TeamPlayers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,11 +75,60 @@ namespace server.Migrations
                     b.Property<int>("TeamId")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("TeamId1")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("TeamId");
 
+                    b.HasIndex("TeamId1");
+
                     b.ToTable("Players");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Age = 20,
+                            Cellphone = "123456",
+                            Ci = "123456",
+                            Date = "14/01/1990",
+                            Estado = "AC",
+                            FechaCreacion = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FechaModificacion = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastNames = "Mamani",
+                            Names = "Jose",
+                            TeamId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Age = 22,
+                            Cellphone = "123456",
+                            Ci = "123456",
+                            Date = "17/03/1992",
+                            Estado = "AC",
+                            FechaCreacion = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FechaModificacion = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastNames = "Quiroga",
+                            Names = "Pepe",
+                            TeamId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Age = 24,
+                            Cellphone = "123456",
+                            Ci = "123456",
+                            Date = "1/11/1995",
+                            Estado = "AC",
+                            FechaCreacion = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FechaModificacion = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastNames = "Choque",
+                            Names = "Luis",
+                            TeamId = 1
+                        });
                 });
 
             modelBuilder.Entity("Team", b =>
@@ -110,6 +162,32 @@ namespace server.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Teams");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Estado = "AC",
+                            FechaCreacion = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FechaModificacion = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Real Madrid"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Estado = "AC",
+                            FechaCreacion = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FechaModificacion = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Barcelona"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Estado = "AC",
+                            FechaCreacion = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FechaModificacion = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Manchester United"
+                        });
                 });
 
             modelBuilder.Entity("server.Models.User", b =>
@@ -163,10 +241,14 @@ namespace server.Migrations
             modelBuilder.Entity("Player", b =>
                 {
                     b.HasOne("Team", "Team")
-                        .WithMany("Players")
+                        .WithMany()
                         .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Team", null)
+                        .WithMany("Players")
+                        .HasForeignKey("TeamId1");
 
                     b.Navigation("Team");
                 });
