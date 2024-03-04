@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./css/index.module.css";
+import { UseRouter } from "../../hooks/useRouter";
 
 interface Option {
   name: string;
@@ -8,8 +9,9 @@ interface Option {
 
 const options: Option[] = [
   {
-    name: "Option 1",
-    subOptions: ["Sub-option 1", "Sub-option 2"],
+    name: "Equipos",
+    subOptions:[]
+    /* subOptions: ["Sub-option 1", "Sub-option 2"], */
   },
   {
     name: "Option 2",
@@ -24,9 +26,10 @@ interface Props {
 
 const Sidebar = ({ children }: Props) => {
   const [activeOption, setActiveOption] = useState<string | null>(null);
-
+  const {redirect} = UseRouter();
   const handleOptionClick = (option: string) => {
     setActiveOption(option === activeOption ? null : option);
+    redirect('/dashboard/'+ option);
   };
 
   return (

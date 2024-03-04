@@ -6,15 +6,16 @@ import ItaliaImg from "../../assets/home/italia.png";
 import PortadaImg from "../../assets/home/portada.png";
 import PlayerImg from "../../assets/home/lampe.jpg";
 import { UseRouter } from "../../hooks/useRouter";
+import TableComponents from "../../components/table";
 
 const Home = () => {
-    const {redirect} = UseRouter()
+  const { redirect } = UseRouter()
   return (
     <div className={styles.container_father}>
       <div className={styles.container_nav}>
         <input type="search" placeholder="Buscar..." name="" id="" />
         <div className={styles.container_nav_user}>
-          <button onClick={()=>redirect("/auth")}>Iniciar sesion</button>
+          <button onClick={() => redirect("/auth")}>Iniciar sesion</button>
           <img src={PlayerImg} alt="User" />
         </div>
       </div>
@@ -151,68 +152,7 @@ const Home = () => {
           </select>
         </div>
 
-        <div>
-          <table id={styles.customers}>
-            <thead>
-              <th>Nombre</th>
-              <th>Apellido</th>
-              <th>Ci</th>
-              <th>Edad</th>
-            </thead>
-            <tbody>
-              <tr>
-                <td className={styles.colum_img}>
-                  <img src={PlayerImg} alt="jugador" />
-                  <p>lampe</p>
-                </td>
-
-                <td>Mamani</td>
-                <td>8021947</td>
-                <td>27</td>
-              </tr>
-              <tr>
-                <td className={styles.colum_img}>
-                  <img src={PlayerImg} alt="jugador" />
-                  <p>lampe</p>
-                </td>
-
-                <td>Mamani</td>
-                <td>8021947</td>
-                <td>27</td>
-              </tr>
-              <tr>
-                <td className={styles.colum_img}>
-                  <img src={PlayerImg} alt="jugador" />
-                  <p>lampe</p>
-                </td>
-
-                <td>Mamani</td>
-                <td>8021947</td>
-                <td>27</td>
-              </tr>
-              <tr>
-                <td className={styles.colum_img}>
-                  <img src={PlayerImg} alt="jugador" />
-                  <p>lampe</p>
-                </td>
-
-                <td>Mamani</td>
-                <td>8021947</td>
-                <td>27</td>
-              </tr>
-              <tr>
-                <td className={styles.colum_img}>
-                  <img src={PlayerImg} alt="jugador" />
-                  <p>lampe</p>
-                </td>
-
-                <td>Mamani</td>
-                <td>8021947</td>
-                <td>27</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <TableComponents />
       </div>
     </div>
   );

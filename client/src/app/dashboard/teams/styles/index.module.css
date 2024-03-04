@@ -1,0 +1,33 @@
+.form {
+    background-color: #1b1c21;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+
+  
+  .input {
+    background-color: #281010;
+    color: #bba3e6;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .button {
+    background-color: #bba3e6;
+    color: #281010;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+  
+  .button:hover {
+    background-color: #edb347;
+  }

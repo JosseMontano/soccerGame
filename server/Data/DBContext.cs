@@ -34,8 +34,7 @@ namespace server.Data
 
 
             //* ===================== START: Get just states actives =====================
-            modelBuilder.Entity<User>().HasQueryFilter(p => p.Estado == States.ACTIVE);
-
+        
             //* ===================== END: Get just states actives =====================
 
         }

@@ -27,7 +27,7 @@ public partial class SoccerGameDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
-        => optionsBuilder.UseNpgsql("Host=localhost;Port=5532;Database=SoccerGameDB;Username=postgres;Password=admin");
+        => optionsBuilder.UseNpgsql("Server=localhost;Port=5832;Database=SoccerGameDB;User Id=postgres;Password=root");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
