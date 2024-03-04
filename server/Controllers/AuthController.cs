@@ -15,10 +15,10 @@ namespace server.Controllers
     [Route("auth")]
     public class AuthController : ControllerBase
     {
-        private readonly DBContext db;
+        private readonly SoccerGameDbContext db;
         private readonly IConfiguration configuration;
         Response res = new();
-        public AuthController(DBContext _db, IConfiguration _configuration)
+        public AuthController(SoccerGameDbContext _db, IConfiguration _configuration)
         {
             db = _db;
             configuration = _configuration;

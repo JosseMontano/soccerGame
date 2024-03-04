@@ -1,14 +1,29 @@
-using server.Models;
+﻿using System;
+using System.Collections.Generic;
 
-public class Player: Base
+namespace server.Models;
+
+public partial class Player
 {
-    public required string Ci { get; set; }
-    public required string Names { get; set; }
-    public required string LastNames { get; set; }
-    public required int Age { get; set; }
-    public required string Date { get; set; }
-    public required string Cellphone { get; set; }
-    public required int TeamId { get; set; }
+    public int Id { get; set; }
 
-    public Team Team { get; set; } = null!;
+    public string Ci { get; set; } = null!;
+
+    public string Names { get; set; } = null!;
+
+    public string Lastnames { get; set; } = null!;
+
+    public int Age { get; set; }
+
+    public DateOnly Date { get; set; }
+
+    public string? Cellphone { get; set; }
+
+    public string? Photo { get; set; }
+
+    public int? Teamid { get; set; }
+
+    public virtual ICollection<Champeonship> Champeonships { get; set; } = new List<Champeonship>();
+
+    public virtual Team? Team { get; set; }
 }

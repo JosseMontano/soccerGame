@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using server.Data;
+using server.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,7 +44,7 @@ builder.Services.AddSwaggerGen(option =>
 builder.Services.AddHttpContextAccessor();
 
 var connectionString = builder.Configuration.GetConnectionString("PostgreSQLConnection");
-builder.Services.AddDbContext<DBContext>(options =>
+builder.Services.AddDbContext<SoccerGameDbContext>(options =>
 {
     options.UseNpgsql(connectionString);
 });

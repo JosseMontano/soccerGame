@@ -13,8 +13,6 @@ namespace server.Data
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Team> Teams { get; set; }
-        public DbSet<Player> Players { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -24,11 +22,7 @@ namespace server.Data
 
             //* ===================== START: Relation =====================
 
-            modelBuilder.Entity<Player>()
-          .HasOne(p => p.Team)
-          .WithMany(p => p.Players)
-          .HasForeignKey(p => p.TeamId);
-
+   
             //* ===================== END: Relation =====================
 
             //* ===================== START: DATA =====================
@@ -41,8 +35,7 @@ namespace server.Data
 
             //* ===================== START: Get just states actives =====================
             modelBuilder.Entity<User>().HasQueryFilter(p => p.Estado == States.ACTIVE);
-            modelBuilder.Entity<Team>().HasQueryFilter(p => p.Estado == States.ACTIVE);
-            modelBuilder.Entity<Player>().HasQueryFilter(p => p.Estado == States.ACTIVE);
+
             //* ===================== END: Get just states actives =====================
 
         }

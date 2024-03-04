@@ -26,5 +26,32 @@ namespace server.Constants
             public static string UPDATED { get; } = "Equipo actualizado exitosamente";
             public static string DELETED { get; } = "Equipo eliminado exitosamente";
         }
+
+        public static class Player
+        {
+            public static string FOUND { get; } = "Jugador obtenido correctamente";
+            public static string NOTFOUND { get; } = "No se encontró el jugador";
+            public static string CREATED { get; } = "Jugador registrado correctamente";
+            public static string UPDATED { get; } = "Jugador actualizado exitosamente";
+            public static string DELETED { get; } = "Jugador eliminado exitosamente";
+        }
+
+        public static class Game
+        {
+            public static string FOUND { get; } = "Partido obtenido correctamente";
+            public static string NOTFOUND { get; } = "No se encontró el partido";
+            public static string CREATED { get; } = "Partido registrado correctamente";
+            public static string UPDATED { get; } = "Partido actualizado exitosamente";
+            public static string DELETED { get; } = "Partido eliminado exitosamente";
+        }
+
+        public static class Championship
+        {
+            public static string FOUND { get; } = "Campeonato obtenido correctamente";
+            public static string NOTFOUND { get; } = "No se encontró el campeonato";
+            public static string CREATED { get; } = "Campeonato registrado correctamente";
+            public static string UPDATED { get; } = "Campeonato actualizado exitosamente";
+            public static string DELETED { get; } = "Campeonato eliminado exitosamente";
+        }
     }
 }

@@ -1,7 +1,17 @@
-using server.Models;
+﻿using System;
+using System.Collections.Generic;
 
-public class Team: Base
+namespace server.Models;
+
+public partial class Team
 {
-    public required string Name { get; set; }
-    public List<Player> Players { get; set; } = null!;
+    public int Id { get; set; }
+
+    public string Name { get; set; } = null!;
+
+    public virtual ICollection<Game> GameLocalteams { get; set; } = new List<Game>();
+
+    public virtual ICollection<Game> GameVisitorteams { get; set; } = new List<Game>();
+
+    public virtual ICollection<Player> Players { get; set; } = new List<Player>();
 }

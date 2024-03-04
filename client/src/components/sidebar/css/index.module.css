@@ -5,7 +5,7 @@
 .sidebar {
   width: var(--sidebar-width);
   height: 100vh;
-  background-color: #02281c;
+  background-color: #edb347;
   position: fixed;
   overflow: auto;
 

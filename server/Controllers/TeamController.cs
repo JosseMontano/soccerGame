@@ -1,18 +1,20 @@
 using Microsoft.AspNetCore.Mvc;
 using server.Constants;
-using server.Data;
 using server.Utils;
 using server.Dtos;
+using server.Models;
+
 namespace server.Controllers
 {
     [ApiController]
     [Route("team")]
     public class TeamController : ControllerBase
-    {
-        private readonly DBContext db;
+  
+     {
+        private readonly SoccerGameDbContext db;
         Response res = new();
 
-        public TeamController(DBContext _db)
+        public TeamController(SoccerGameDbContext _db)
         {
             db = _db;
         }
@@ -57,6 +59,6 @@ namespace server.Controllers
             return res.SuccessResponse(Messages.Team.DELETED, team);
         }
 
-    }
+    } 
 
 }
